@@ -1,0 +1,14 @@
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+export default async function DashboardRoot() {
+    const session = await getServerSession(authOptions);
+    if (session?.user?.role === 'OWNER') {
+        redirect('/dashboard/owner');
+    }
+    else if (session?.user?.role === 'SEEKER') {
+        redirect('/dashboard/seeker');
+    }
+    // Fallback
+    redirect('/');
+}

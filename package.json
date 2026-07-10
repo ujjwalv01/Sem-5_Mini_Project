@@ -1,0 +1,46 @@
+{
+  "name": "linkmedicalspaces",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.98.0",
+    "@auth/prisma-adapter": "^2.11.2",
+    "@googlemaps/js-api-loader": "^2.0.2",
+    "@prisma/client": "^5.14.0",
+    "bcryptjs": "^3.0.3",
+    "browser-image-compression": "^2.0.2",
+    "cheerio": "^1.2.0",
+    "cloudinary": "^2.10.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.3.0",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.16.0",
+    "next": "14.2.35",
+    "next-auth": "^4.24.14",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-dropzone": "^15.0.0",
+    "react-hook-form": "^7.76.1",
+    "recharts": "^3.8.1",
+    "resend": "^6.12.3",
+    "stripe": "^22.1.1",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "prisma": "^5.14.0",
+    "tailwindcss": "^3.4.1"
+  }
+}
