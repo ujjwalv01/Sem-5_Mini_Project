@@ -32,6 +32,7 @@ export default function Home() {
             if (autocompleteInputRef.current) {
                 const autocomplete = new google.maps.places.Autocomplete(autocompleteInputRef.current, {
                     types: ['(regions)'],
+                    componentRestrictions: { country: 'in' }
                 });
                 autocomplete.addListener('place_changed', () => {
                     const place = autocomplete.getPlace();

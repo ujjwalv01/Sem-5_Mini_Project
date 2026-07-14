@@ -154,9 +154,7 @@ export default function AuthModal({ isOpen, onClose, callbackUrl = '/dashboard' 
               </button>
             </form>)}
 
-          <p className="text-[11px] text-slate-500 text-center mt-5">
-            By continuing, you agree to our <a href="/terms" className="text-teal-600 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-teal-600 hover:underline">Privacy Policy</a>
-          </p>
+
         </motion.div>
       </div>
     </AnimatePresence>);

@@ -4,18 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building, Menu, X, User, ChevronDown, LayoutDashboard, LogOut, PlusCircle } from 'lucide-react';
-const SPACE_TYPES = [
-    { value: '', label: 'All Space Types' },
-    { value: 'EXAM_ROOM', label: 'Exam Room' },
-    { value: 'SURGICAL_SUITE', label: 'Surgical Suite' },
-    { value: 'IMAGING_CENTER', label: 'Imaging Center' },
-    { value: 'DENTAL_OFFICE', label: 'Dental Office' },
-    { value: 'THERAPY_ROOM', label: 'Therapy Room' },
-    { value: 'LAB', label: 'Laboratory' },
-    { value: 'FULL_OFFICE', label: 'Full Medical Office' },
-    { value: 'MEDICAL_SPA', label: 'Medical Spa' },
-    { value: 'URGENT_CARE', label: 'Urgent Care' },
-];
+
 export default function Navbar() {
     const router = useRouter();
     const pathname = usePathname();
@@ -63,9 +52,7 @@ export default function Navbar() {
 
         {/* Right Side: Navigation Links & User Dropdown */}
         <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-shrink-0">
-          <button onClick={() => router.push('/our-story')} className="text-xs sm:text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors py-2 px-3 rounded-xl hover:bg-slate-50">
-            Our Story
-          </button>
+
           <button onClick={() => router.push('/pricing')} className="text-xs sm:text-sm font-bold text-slate-600 hover:text-teal-600 transition-colors py-2 px-3 rounded-xl hover:bg-slate-50">
             Pricing
           </button>

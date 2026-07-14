@@ -367,7 +367,7 @@ function ListingForm({ draftIdFromProps }) {
                 mapInstanceRef.current = map;
                 markerInstanceRef.current = marker;
                 if (autocompleteInputRef.current) {
-                    const autocomplete = new google.maps.places.Autocomplete(autocompleteInputRef.current, { types: ['address'] });
+                    const autocomplete = new google.maps.places.Autocomplete(autocompleteInputRef.current, { types: ['address'], componentRestrictions: { country: 'in' } });
                     autocomplete.addListener('place_changed', () => {
                         const place = autocomplete.getPlace();
                         if (!place.geometry || !place.geometry.location)
