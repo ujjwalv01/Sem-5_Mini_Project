@@ -45,7 +45,9 @@ The project requires certain environment variables to run properly (like databas
 1. Locate the `.env.example` file in the root directory (if it exists) or create a new file named `.env`.
 2. Add the following keys to your `.env` file and ask the project lead for the actual values:
 
-    MONGODB_URI=your_mongodb_connection_string
+    # PostgreSQL Database Connection String (Neon)
+    DATABASE_URL=your_neon_postgres_connection_string
+    
     NEXTAUTH_URL=http://localhost:3000
     NEXTAUTH_SECRET=your_super_secret_key
 
