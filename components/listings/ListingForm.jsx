@@ -1152,7 +1152,7 @@ function ListingForm({ draftIdFromProps }) {
                <p className="text-slate-500">You can change it anytime.</p>
                <div className="flex justify-center py-10">
                  <div className="relative max-w-sm w-full">
-                   <span className="absolute left-6 top-1/2 -translate-y-1/2 text-4xl font-bold text-slate-900">$</span>
+                   <span className="absolute left-6 top-1/2 -translate-y-1/2 text-4xl font-bold text-slate-900">₹</span>
                    <input type="number" value={monthlyRent} onChange={e => setMonthlyRent(e.target.value)} placeholder="0 *" className="w-full pl-16 pr-6 py-6 border-2 border-slate-200 focus:border-slate-800 rounded-3xl text-4xl font-extrabold text-slate-900 outline-none transition-colors text-center shadow-sm"/>
                  </div>
                </div>

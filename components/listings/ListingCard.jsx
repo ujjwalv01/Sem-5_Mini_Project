@@ -6,13 +6,13 @@ export default function ListingCard({ listing, showActions = false, onEdit, onDe
     // Determine the display price
     let displayPrice = '';
     if (listing.pricePerMonth) {
-        displayPrice = `$${listing.pricePerMonth}/mo`;
+        displayPrice = `₹${listing.pricePerMonth}/mo`;
     }
     else if (listing.pricePerDay) {
-        displayPrice = `$${listing.pricePerDay}/day`;
+        displayPrice = `₹${listing.pricePerDay}/day`;
     }
     else if (listing.pricePerHour) {
-        displayPrice = `$${listing.pricePerHour}/hr`;
+        displayPrice = `₹${listing.pricePerHour}/hr`;
     }
     else {
         displayPrice = 'Contact for Price';

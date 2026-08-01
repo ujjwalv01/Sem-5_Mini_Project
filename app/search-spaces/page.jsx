@@ -267,11 +267,11 @@ function SearchSpacesPage() {
             });
             let displayPrice = '';
             if (listing.pricePerMonth)
-                displayPrice = `$${listing.pricePerMonth}/mo`;
+                displayPrice = `₹${listing.pricePerMonth}/mo`;
             else if (listing.pricePerDay)
-                displayPrice = `$${listing.pricePerDay}/day`;
+                displayPrice = `₹${listing.pricePerDay}/day`;
             else if (listing.pricePerHour)
-                displayPrice = `$${listing.pricePerHour}/hr`;
+                displayPrice = `₹${listing.pricePerHour}/hr`;
             else
                 displayPrice = 'Contact Price';
             const coverUrl = listing.media?.[0]?.originalUrl || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800';
@@ -470,7 +470,7 @@ function SearchSpacesPage() {
             : 'border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 bg-white'}`}>
                 <DollarSign className="w-4 h-4"/>
                 {minPrice !== null || maxPrice !== null
-            ? `${minPrice !== null ? `$${minPrice}` : '$0'} - ${maxPrice !== null ? `$${maxPrice}` : '∞'}`
+            ? `${minPrice !== null ? `$${minPrice}` : '₹0'} - ${maxPrice !== null ? `$${maxPrice}` : '∞'}`
             : 'Price Range'}
                 <ChevronDown className="w-3.5 h-3.5 opacity-60"/>
               </button>
@@ -483,11 +483,11 @@ function SearchSpacesPage() {
                       
                       <div className="grid grid-cols-2 gap-3">
                         <div>
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Min Price ($)</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Min Price (₹)</label>
                           <input type="number" placeholder="0" value={tempMinPrice} onChange={(e) => setTempMinPrice(e.target.value)} className="w-full border border-slate-200 px-3 py-2 rounded-xl text-sm font-semibold outline-none focus:border-teal-500"/>
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Max Price ($)</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Max Price (₹)</label>
                           <input type="number" placeholder="10000" value={tempMaxPrice} onChange={(e) => setTempMaxPrice(e.target.value)} className="w-full border border-slate-200 px-3 py-2 rounded-xl text-sm font-semibold outline-none focus:border-teal-500"/>
                         </div>
                       </div>
@@ -497,10 +497,10 @@ function SearchSpacesPage() {
                         <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Presets</label>
                         <div className="flex flex-wrap gap-1.5">
                           {[
-                { label: 'Under $150', min: null, max: 150 },
-                { label: '$150 - $500', min: 150, max: 500 },
-                { label: '$500 - $2k', min: 500, max: 2000 },
-                { label: '$2k+', min: 2000, max: null }
+                { label: 'Under ₹15k', min: null, max: 15000 },
+                { label: '₹15k - ₹50k', min: 15000, max: 50000 },
+                { label: '₹50k - ₹2L', min: 50000, max: 200000 },
+                { label: '₹2L+', min: 200000, max: null }
             ].map((p, idx) => (<button key={idx} onClick={() => {
                     setTempMinPrice(p.min !== null ? p.min.toString() : '');
                     setTempMaxPrice(p.max !== null ? p.max.toString() : '');
@@ -745,11 +745,11 @@ function ListingGridCard({ listing, onMouseEnter, onMouseLeave, isSaved, onToggl
     const cardVideoCount = listing.media?.filter((m) => m.type === 'VIDEO').length || 0;
     let displayPrice = '';
     if (listing.pricePerMonth)
-        displayPrice = `$${listing.pricePerMonth}/mo`;
+        displayPrice = `₹${listing.pricePerMonth}/mo`;
     else if (listing.pricePerDay)
-        displayPrice = `$${listing.pricePerDay}/day`;
+        displayPrice = `₹${listing.pricePerDay}/day`;
     else if (listing.pricePerHour)
-        displayPrice = `$${listing.pricePerHour}/hr`;
+        displayPrice = `₹${listing.pricePerHour}/hr`;
     else
         displayPrice = 'Contact Price';
     // Build subtitle: sqft | spaceType

@@ -74,7 +74,7 @@ function PricingPage() {
               <h1 className="text-4xl md:text-[42px] font-bold text-[#2D4566] leading-[1.2] mb-8">
                 <span className="inline-block mr-2 text-[42px]">📣</span> 
                 New, Simpler Pricing.<br />
-                Just $120/Year.
+                Just ₹9,999/Year.
               </h1>
               
               <div className="space-y-6 text-[#6B7280] text-[17px] md:text-[19px] leading-[1.6]">
@@ -105,7 +105,7 @@ function PricingPage() {
 
                   {/* Price */}
                   <div className="flex items-baseline gap-1 py-6 border-y border-slate-100">
-                    <span className="text-5xl font-black text-[#1a2b49]">$120</span>
+                    <span className="text-5xl font-black text-[#1a2b49]">₹9,999</span>
                     <span className="text-slate-500 font-semibold text-base">/ year</span>
                     <span className="text-xs text-slate-400 ml-2">— That's it.</span>
                   </div>
