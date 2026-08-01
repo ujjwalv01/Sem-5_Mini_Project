@@ -18,7 +18,7 @@ export default async function SeekerDashboardLayout({ children }) {
       <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex-shrink-0 flex flex-col justify-between">
         <div className="p-6">
           <Link href="/" className="block mb-8">
-            <img src="/logo-new.png" alt="LinkMedicalSpaces" className="h-8 w-auto object-contain"/>
+            <img src="/logo-new.png" alt="MedSpace" className="h-8 w-auto object-contain"/>
           </Link>
           <SeekerSidebarNav />
         </div>

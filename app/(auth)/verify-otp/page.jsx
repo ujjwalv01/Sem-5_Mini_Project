@@ -150,7 +150,7 @@ function VerifyOTPPage() {
         <div className="w-10 h-10 rounded-xl bg-teal-600 flex items-center justify-center">
           <Stethoscope className="w-5 h-5 text-white"/>
         </div>
-        <span className="font-bold text-gray-900 text-xl">LinkMedicalSpaces</span>
+        <span className="font-bold text-gray-900 text-xl">MedSpace</span>
       </Link>
 
       <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">

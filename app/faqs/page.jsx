@@ -9,13 +9,13 @@ export default function FaqsPage() {
     const [openIndex, setOpenIndex] = useState(null);
     const faqs = [
         {
-            q: 'What is Link Medical Spaces?',
+            q: 'What is MedSpace?',
             a: (<p>
           An online marketplace where you can list any available space in your medical office for other physicians or healthcare workers to sublet or lease.
         </p>)
         },
         {
-            q: 'Who should list on Link Medical Spaces?',
+            q: 'Who should list on MedSpace?',
             a: (<div className="space-y-4">
           <p>
             Do you have space in your medical office that you’re not using, whether all the time or some of the time? Then use that to help someone and generate revenue as well! You choose how much of your office will be available and when. It could be as little as half a day a week all the way to full-time.
@@ -27,7 +27,7 @@ export default function FaqsPage() {
             Maybe you have 5 exam rooms while you need only 3 for your own use. Share the space and both of you benefit. Or maybe you have a completely unused medical office space that you are looking to lease.
           </p>
           <p>
-            Link Medical Spaces puts your medical office space right in front of the people who will use it. Physicians and other healthcare workers.
+            MedSpace puts your medical office space right in front of the people who will use it. Physicians and other healthcare workers.
           </p>
         </div>)
         },
@@ -56,7 +56,7 @@ export default function FaqsPage() {
         </div>)
         },
         {
-            q: 'How does Link Medical Spaces work?',
+            q: 'How does MedSpace work?',
             a: (<p>
           It’s simple. If you’re looking for available medical office space, go right ahead to browse the website and see what is available in your neck of the woods. If you have medical office space to lease out or sublet, create a free account and post it in a matter of minutes by answering a few questions about your space. We charge you a nominal fee to do so.
         </p>)
@@ -94,7 +94,7 @@ export default function FaqsPage() {
       <main className="flex-1 max-w-4xl w-full mx-auto px-6 py-16 md:py-24">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#1a2b49] mb-4">Frequently Asked Questions</h1>
-          <p className="text-lg text-slate-500">Everything you need to know about Link Medical Spaces.</p>
+          <p className="text-lg text-slate-500">Everything you need to know about MedSpace.</p>
         </div>
 
         <div className="space-y-4">

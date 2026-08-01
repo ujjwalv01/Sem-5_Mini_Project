@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
     {
-        quote: "I had a fantastic experience working with Link Medical Spaces to find a medical office space to lease. From the start, their team was attentive, knowledgeable, and genuinely invested in understanding my needs. They made the entire process smooth and stress-free — handling every detail with professionalism and care. Thanks to their expertise, I found the perfect office space that meets all my requirements. I highly recommend Link Medical Spaces to anyone looking for medical office leasing solutions!",
+        quote: "I had a fantastic experience working with MedSpace to find a medical office space to lease. From the start, their team was attentive, knowledgeable, and genuinely invested in understanding my needs. They made the entire process smooth and stress-free — handling every detail with professionalism and care. Thanks to their expertise, I found the perfect office space that meets all my requirements. I highly recommend MedSpace to anyone looking for medical office leasing solutions!",
         name: "Jamie Martinez",
         title: "Practice Manager"
     },
     {
-        quote: "Link Medical Spaces made it easy for me to find and sublease medical office space. The website is simple to use and made for doctors and healthcare providers. I could quickly list my space and talk to people who were interested. The listings had clear details like size, price, and what equipment was included. This saved me time and stress compared to using a regular broker. The support team was friendly and quick to help when I had questions. I would definitely recommend Link Medical Spaces to anyone in healthcare who wants to rent out or find office space.",
+        quote: "MedSpace made it easy for me to find and sublease medical office space. The website is simple to use and made for doctors and healthcare providers. I could quickly list my space and talk to people who were interested. The listings had clear details like size, price, and what equipment was included. This saved me time and stress compared to using a regular broker. The support team was friendly and quick to help when I had questions. I would definitely recommend MedSpace to anyone in healthcare who wants to rent out or find office space.",
         name: "Dr Khubchandani",
         title: ""
     },

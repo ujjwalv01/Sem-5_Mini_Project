@@ -711,7 +711,7 @@ function SearchSpacesPage() {
 
               {/* Status footer for fallback */}
               <div className="text-center text-[10px] text-slate-500 z-10">
-                Interactive relative map mock coordinates — LinkMedicalSpaces
+                Interactive relative map mock coordinates — MedSpace
               </div>
 
             </div>)}

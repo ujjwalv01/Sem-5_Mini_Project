@@ -4,8 +4,8 @@ import { Providers } from '@/components/providers';
 const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
     title: {
-        default: 'LinkMedicalSpaces — Find Your Next Medical Office',
-        template: '%s | LinkMedicalSpaces',
+        default: 'MedSpace — Find Your Next Medical Office',
+        template: '%s | MedSpace',
     },
     description: 'The only platform dedicated to medical office spaces. Find exam rooms, surgical suites, dental offices, and more to lease, sublet, or share.',
     icons: {
@@ -21,27 +21,27 @@ export const metadata = {
         'healthcare real estate',
         'medical space listing',
     ],
-    authors: [{ name: 'LinkMedicalSpaces' }],
-    creator: 'LinkMedicalSpaces',
+    authors: [{ name: 'MedSpace' }],
+    creator: 'MedSpace',
     openGraph: {
         type: 'website',
         locale: 'en_US',
         url: 'https://www.linkmedicalspaces.com',
-        siteName: 'LinkMedicalSpaces',
-        title: 'LinkMedicalSpaces — Find Your Next Medical Office',
+        siteName: 'MedSpace',
+        title: 'MedSpace — Find Your Next Medical Office',
         description: 'The only platform dedicated to medical office spaces. Find exam rooms, surgical suites, dental offices, and more.',
         images: [
             {
                 url: 'https://www.linkmedicalspaces.com/wp-content/uploads/2024/04/LMS-Image-1-1473559425.jpg',
                 width: 1600,
                 height: 1067,
-                alt: 'LinkMedicalSpaces',
+                alt: 'MedSpace',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'LinkMedicalSpaces',
+        title: 'MedSpace',
         description: 'Find your next medical office space',
     },
     robots: {
