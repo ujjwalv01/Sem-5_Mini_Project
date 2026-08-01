@@ -104,11 +104,11 @@ export default async function OwnerDashboardHome() {
               {recentListings.map((listing) => {
                 const image = listing.media?.[0]?.originalUrl || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800';
                 const displayPrice = listing.pricePerMonth
-                    ? `$${listing.pricePerMonth}/mo`
+                    ? `₹${listing.pricePerMonth}/mo`
                     : listing.pricePerDay
-                        ? `$${listing.pricePerDay}/day`
+                        ? `₹${listing.pricePerDay}/day`
                         : listing.pricePerHour
-                            ? `$${listing.pricePerHour}/hr`
+                            ? `₹${listing.pricePerHour}/hr`
                             : 'Contact';
                 return (<div key={listing.id} className="flex flex-col lg:flex-row items-stretch hover:bg-slate-50 transition-colors">
                     {/* Photo */}

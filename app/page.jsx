@@ -124,7 +124,7 @@ export default function Home() {
                 <span>Post Your Space</span>
                 <ArrowRight className="w-5 h-5"/>
               </div>
-              <div className="text-[10px] sm:text-xs font-bold opacity-90 mt-1 uppercase tracking-wider">Only $120/year</div>
+              <div className="text-[10px] sm:text-xs font-bold opacity-90 mt-1 uppercase tracking-wider">Only ₹9,999/year</div>
             </button>
           </div>
         </div>
