@@ -1,3 +1,5 @@
+# We are open to any new feature suggestion. You can directly open issue and add `feature` label.
+
 # MedSpace (Sem-5 Mini Project)
 
 MedSpace is a web application built with Next.js designed to help users discover, book, and manage medical spaces easily.
