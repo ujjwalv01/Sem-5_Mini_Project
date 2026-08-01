@@ -31,8 +31,8 @@ export async function POST(req) {
         tempFilePath = path.join(tempDir, sanitizedFilename);
         fs.writeFileSync(tempFilePath, buffer);
         const folder = listingId
-            ? `linkmedicalspaces/listings/${listingId}`
-            : `linkmedicalspaces/temp/${session.user.id}`;
+            ? `medspace/listings/${listingId}`
+            : `medspace/temp/${session.user.id}`;
         // Upload video using path
         const result = await uploadVideo(tempFilePath, folder);
         // Clean up temp file immediately

@@ -282,7 +282,7 @@ export default function PropertyDetailClient({ listing }) {
     // --- Share URL ---
     const handleShare = async () => {
         const url = window.location.href;
-        const title = listing.title || 'Link Medical Spaces';
+        const title = listing.title || 'MedSpace';
         if (navigator.share) {
             try {
                 await navigator.share({
@@ -559,7 +559,7 @@ export default function PropertyDetailClient({ listing }) {
                   </p>
                   
                   <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 uppercase tracking-widest">
-                    LinkMedicalSpaces Sandbox fallbacks
+                    MedSpace Sandbox fallbacks
                   </div>
                 </div>)}
             </div>

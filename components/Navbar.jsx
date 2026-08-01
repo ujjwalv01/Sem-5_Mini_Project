@@ -47,7 +47,7 @@ export default function Navbar() {
         
         {/* Left Side: Logo */}
         <div className="flex items-center cursor-pointer flex-shrink-0" onClick={() => router.push('/')}>
-          <img src="/logo-new.png" alt="LinkMedicalSpaces Orlando" className="h-10 sm:h-12 w-auto object-contain"/>
+          <img src="/logo-new.png" alt="MedSpace" className="h-10 sm:h-12 w-auto object-contain"/>
         </div>
 
         {/* Right Side: Navigation Links & User Dropdown */}
@@ -184,7 +184,7 @@ export default function Navbar() {
               </div>
 
               <div className="text-center text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                LinkMedicalSpaces
+                MedSpace
               </div>
             </motion.div>
           </>)}

@@ -39,7 +39,7 @@ export default function AdminLayout({ children }) {
               <Shield className="w-5 h-5 text-white"/>
             </div>
             <div className="min-w-0">
-              <h1 className="text-sm font-extrabold tracking-tight text-white">LMS Admin</h1>
+              <h1 className="text-sm font-extrabold tracking-tight text-white">MedSpace Admin</h1>
               <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{adminRole}</p>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function AdminLayout({ children }) {
           </button>
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-teal-600"/>
-            <span className="text-sm font-extrabold text-slate-900">LMS Admin</span>
+            <span className="text-sm font-extrabold text-slate-900">MedSpace Admin</span>
           </div>
           <div className="w-10"/> {/* Spacer for centering */}
         </header>

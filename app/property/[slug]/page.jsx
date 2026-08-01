@@ -15,11 +15,11 @@ export async function generateMetadata({ params }) {
     });
     if (!listing) {
         return {
-            title: 'Space Not Found | LinkMedicalSpaces',
+            title: 'Space Not Found | MedSpace',
             description: 'The requested medical space listing was not found.',
         };
     }
-    const title = `${listing.title} — LinkMedicalSpaces`;
+    const title = `${listing.title} — MedSpace`;
     const description = listing.description
         ? listing.description.substring(0, 160)
         : 'Find exam rooms, surgical suites, and specialized medical offices to rent or lease.';

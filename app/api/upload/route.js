@@ -25,8 +25,8 @@ export async function POST(req) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
         const folder = listingId
-            ? `linkmedicalspaces/listings/${listingId}`
-            : 'linkmedicalspaces/uploads';
+            ? `medspace/listings/${listingId}`
+            : 'medspace/uploads';
         const result = await uploadImage(buffer, folder);
         // If listingId provided, save media record to DB
         if (listingId) {

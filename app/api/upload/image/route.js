@@ -20,8 +20,8 @@ export async function POST(req) {
         const buffer = Buffer.from(bytes);
         // Build directory folder
         const folder = listingId
-            ? `linkmedicalspaces/listings/${listingId}`
-            : `linkmedicalspaces/temp/${session.user.id}`;
+            ? `medspace/listings/${listingId}`
+            : `medspace/temp/${session.user.id}`;
         // Upload image to Cloudinary
         const result = await uploadImage(buffer, folder);
         // If listingId is provided, save image info directly to ListingMedia database table

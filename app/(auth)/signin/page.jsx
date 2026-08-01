@@ -128,7 +128,7 @@ function SignInPage() {
             <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center">
               <Stethoscope className="w-5 h-5 text-white"/>
             </div>
-            <span className="text-white font-bold text-xl tracking-tight">LinkMedicalSpaces</span>
+            <span className="text-white font-bold text-xl tracking-tight">MedSpace</span>
           </div>
 
           {/* Main heading */}
@@ -198,7 +198,7 @@ function SignInPage() {
             <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center">
               <Stethoscope className="w-4 h-4 text-white"/>
             </div>
-            <span className="font-bold text-gray-900">LinkMedicalSpaces</span>
+            <span className="font-bold text-gray-900">MedSpace</span>
           </div>
 
           {/* Header */}

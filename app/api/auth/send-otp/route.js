@@ -35,16 +35,16 @@ export async function POST(req) {
         });
         // Send email via Resend
         await resend.emails.send({
-            from: 'LinkMedicalSpaces <onboarding@resend.dev>',
+            from: 'MedSpace <onboarding@resend.dev>',
             to: normalizedEmail,
-            subject: `${code} — Your LinkMedicalSpaces verification code`,
+            subject: `${code} — Your MedSpace verification code`,
             html: `
         <div style="font-family: 'Inter', sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
           <div style="text-align: center; margin-bottom: 32px;">
             <div style="display: inline-block; background: linear-gradient(135deg, #0d9488, #0f766e); 
                         padding: 12px 24px; border-radius: 12px;">
               <span style="color: white; font-size: 20px; font-weight: 700; letter-spacing: -0.5px;">
-                LinkMedicalSpaces
+                MedSpace
               </span>
             </div>
           </div>
@@ -54,7 +54,7 @@ export async function POST(req) {
               Your verification code
             </h2>
             <p style="margin: 0 0 32px; color: #6b7280; font-size: 15px;">
-              Enter this code to sign in to your LinkMedicalSpaces account.
+              Enter this code to sign in to your MedSpace account.
             </p>
 
             <!-- OTP Display -->
@@ -73,7 +73,7 @@ export async function POST(req) {
           </div>
 
           <p style="text-align: center; color: #d1d5db; font-size: 12px; margin-top: 24px;">
-            © ${new Date().getFullYear()} LinkMedicalSpaces. All rights reserved.
+            © ${new Date().getFullYear()} MedSpace. All rights reserved.
           </p>
         </div>
       `,
