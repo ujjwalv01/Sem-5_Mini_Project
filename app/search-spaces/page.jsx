@@ -470,7 +470,7 @@ function SearchSpacesPage() {
             : 'border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 bg-white'}`}>
                 <DollarSign className="w-4 h-4"/>
                 {minPrice !== null || maxPrice !== null
-            ? `${minPrice !== null ? `$${minPrice}` : '₹0'} - ${maxPrice !== null ? `$${maxPrice}` : '∞'}`
+            ? `${minPrice !== null ? `₹${minPrice}` : '₹0'} - ${maxPrice !== null ? `₹${maxPrice}` : '∞'}`
             : 'Price Range'}
                 <ChevronDown className="w-3.5 h-3.5 opacity-60"/>
               </button>
@@ -665,7 +665,7 @@ function SearchSpacesPage() {
 
                       {/* Small text tag */}
                       <span className="absolute top-10 left-1/2 -translate-x-1/2 bg-slate-800/90 text-[10px] font-bold text-white px-2 py-0.5 rounded shadow whitespace-nowrap opacity-60 pointer-events-none">
-                        {marker.listing.pricePerMonth ? `$${marker.listing.pricePerMonth}/mo` : marker.listing.pricePerHour ? `$${marker.listing.pricePerHour}/hr` : 'Click'}
+                        {marker.listing.pricePerMonth ? `₹${marker.listing.pricePerMonth}/mo` : marker.listing.pricePerHour ? `₹${marker.listing.pricePerHour}/hr` : 'Click'}
                       </span>
                     </div>);
             })}
@@ -694,11 +694,11 @@ function SearchSpacesPage() {
                       <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-700">
                         <span className="font-extrabold text-white text-sm">
                           {activeInfoWindowListing.pricePerMonth
-                    ? `$${activeInfoWindowListing.pricePerMonth}/mo`
+                    ? `₹${activeInfoWindowListing.pricePerMonth}/mo`
                     : activeInfoWindowListing.pricePerDay
-                        ? `$${activeInfoWindowListing.pricePerDay}/day`
+                        ? `₹${activeInfoWindowListing.pricePerDay}/day`
                         : activeInfoWindowListing.pricePerHour
-                            ? `$${activeInfoWindowListing.pricePerHour}/hr`
+                            ? `₹${activeInfoWindowListing.pricePerHour}/hr`
                             : 'Contact Price'}
                         </span>
                         <a href={`/property/${activeInfoWindowListing.slug}`} className="bg-teal-600 hover:bg-teal-500 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-xl transition-all shadow-md active:scale-95">

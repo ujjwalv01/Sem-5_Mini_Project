@@ -49,11 +49,11 @@ function SavedListingCard({ listing, onUnsave }) {
         : [{ id: 'fallback', originalUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800', order: 0 }];
     let displayPrice = '';
     if (listing.pricePerMonth)
-        displayPrice = `$${listing.pricePerMonth}/mo`;
+        displayPrice = `₹${listing.pricePerMonth}/mo`;
     else if (listing.pricePerDay)
-        displayPrice = `$${listing.pricePerDay}/day`;
+        displayPrice = `₹${listing.pricePerDay}/day`;
     else if (listing.pricePerHour)
-        displayPrice = `$${listing.pricePerHour}/hr`;
+        displayPrice = `₹${listing.pricePerHour}/hr`;
     else
         displayPrice = 'Contact Price';
     const handlePrevImage = (e) => {

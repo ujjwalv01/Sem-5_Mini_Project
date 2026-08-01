@@ -236,7 +236,7 @@ export default function PropertyDetailClient({ listing }) {
             subtotal: parseFloat(subtotal.toFixed(2)),
             serviceFee,
             total: parseFloat(total.toFixed(2)),
-            rateLabel: `$${rate}/${activeOption.unit}`
+            rateLabel: `₹${rate}/${activeOption.unit}`
         };
     };
     const pricingDetails = calculateTotal();
@@ -372,7 +372,7 @@ export default function PropertyDetailClient({ listing }) {
             
             {/* Price */}
             <div className="text-xl md:text-2xl font-bold text-red-600">
-              {listing.pricePerMonth ? `$${listing.pricePerMonth}/mo` : listing.pricePerDay ? `$${listing.pricePerDay}/day` : listing.pricePerHour ? `$${listing.pricePerHour}/hr` : 'Contact for Price'}
+              {listing.pricePerMonth ? `₹${listing.pricePerMonth}/mo` : listing.pricePerDay ? `₹${listing.pricePerDay}/day` : listing.pricePerHour ? `₹${listing.pricePerHour}/hr` : 'Contact for Price'}
             </div>
           </div>
         </div>
@@ -510,7 +510,7 @@ export default function PropertyDetailClient({ listing }) {
           </div>
 
           {/* Video Section (If uploaded) */}
-          {listing.media.some(m => m.originalUrl.match(/\.(mp4|webm|ogg)$/i)) && (<>
+          {listing.media.some(m => m.originalUrl.match(/\.(mp4|webm|ogg)₹/i)) && (<>
               <div className="border-t border-slate-100"/>
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
@@ -519,7 +519,7 @@ export default function PropertyDetailClient({ listing }) {
                 </h3>
                 <div className="rounded-3xl overflow-hidden aspect-video border border-slate-200 bg-slate-900 relative">
                   {listing.media
-                .filter(m => m.originalUrl.match(/\.(mp4|webm|ogg)$/i))
+                .filter(m => m.originalUrl.match(/\.(mp4|webm|ogg)₹/i))
                 .map(videoItem => (<video key={videoItem.id} src={videoItem.originalUrl} controls className="w-full h-full"/>))}
                 </div>
               </div>
