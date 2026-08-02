@@ -47,7 +47,7 @@ export default function Navbar() {
         
         {/* Left Side: Logo */}
         <div className="flex items-center cursor-pointer flex-shrink-0" onClick={() => router.push('/')}>
-          <img src="/logo-new.png" alt="MedSpace" className="h-10 sm:h-12 w-auto object-contain"/>
+          <h1 className="text-2xl font-bold text-teal-600">MedSpace </h1>
         </div>
 
         {/* Right Side: Navigation Links & User Dropdown */}

@@ -11,10 +11,10 @@ export default function Footer() {
         {/* Branding & Logo */}
         <div className="flex flex-col gap-4 max-w-sm">
           <div className="flex items-center cursor-pointer flex-shrink-0" onClick={() => window.scrollTo(0, 0)}>
-            <img src="/image.png?v=3" alt="MedSpace" className="h-16 sm:h-20 w-auto object-contain"/>
+            <h2 className="text-2xl font-bold text-white">MedSpace</h2>
           </div>
           <p className="text-slate-400 text-sm leading-relaxed">
-            The Airbnb for medical and dental office listings. Connecting healthcare specialists with verified clinical rooms, labs, and surgical suites.
+            MedSpace is a college mini project developed to demonstrate medical space discovery, booking, and management using modern web technologies.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function Footer() {
 
       {/* Bottom copyright banner */}
       <div className="max-w-7xl mx-auto border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-semibold">
-        <p>© {new Date().getFullYear()} MedSpace. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} MedSpace. Created for Sem-5 Mini Project.</p>
         <p>Built with Next.js & Tailwind CSS</p>
       </div>
 
