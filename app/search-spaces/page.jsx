@@ -4,7 +4,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Search, MapPin, ChevronLeft, ChevronRight, DollarSign, Map, List, SlidersHorizontal, X, ChevronDown, Info, MapPinned, Image as ImageIcon, Video } from 'lucide-react';
+import { Heart, Search, MapPin, ChevronLeft, ChevronRight, IndianRupee, Map, List, SlidersHorizontal, X, ChevronDown, Info, MapPinned, Image as ImageIcon, Video } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 function SearchSpacesPage() {
     const router = useRouter();
@@ -468,7 +468,7 @@ function SearchSpacesPage() {
               <button onClick={() => setIsPricePopoverOpen(!isPricePopoverOpen)} className={`flex items-center justify-between gap-1.5 px-4 py-2 border rounded-xl text-sm font-semibold transition-all ${minPrice !== null || maxPrice !== null
             ? 'border-teal-600 bg-teal-50/60 text-teal-800'
             : 'border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-900 bg-white'}`}>
-                <DollarSign className="w-4 h-4"/>
+                <IndianRupee className="w-4 h-4"/>
                 {minPrice !== null || maxPrice !== null
             ? `${minPrice !== null ? `₹${minPrice}` : '₹0'} - ${maxPrice !== null ? `₹${maxPrice}` : '∞'}`
             : 'Price Range'}
