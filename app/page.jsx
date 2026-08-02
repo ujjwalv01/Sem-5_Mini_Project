@@ -64,10 +64,10 @@ export default function Home() {
     const sections = [
         {
             image: '/lms-1.jpg',
-            preheading: 'UNIQUE MARKETPLACE',
-            heading: 'Connecting Docs With Medical Office Space',
-            text: 'The only space on the internet where you can look specifically for medical office space, whether to lease or sublet. The only space on the internet where you can list even part of your office, even part-time.',
-        },
+            preheading: 'PROJECT OVERVIEW',
+            heading: 'Discover Medical Spaces',
+            text: 'Browse available medical spaces and explore the core features of the MedSpace project.'
+          },
         {
             image: '/lms-2.jpg',
             preheading: 'PASSIVE INCOME OPPORTUNITY',
