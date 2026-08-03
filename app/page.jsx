@@ -61,6 +61,7 @@ export default function Home() {
             params.set('lng', lng.toString());
         router.push(`/search-spaces?${params.toString()}`);
     };
+    
     const sections = [
         {
             image: '/lms-1.jpg',
