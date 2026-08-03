@@ -67,8 +67,7 @@ export default function Home() {
             preheading: 'PROJECT OVERVIEW',
             heading: 'Discover Medical Spaces',
             text: 'Browse available medical spaces and explore the core features of the MedSpace project.'
-          },
-          
+          }, 
         {
             image: '/lms-2.jpg',
             preheading: 'PASSIVE INCOME OPPORTUNITY',
