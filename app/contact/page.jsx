@@ -45,17 +45,20 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-800">
             Contact Us
           </h1>
+          
         </div>
 
         {/* Form Card */}
         <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 p-8 md:p-12 w-full">
           <p className="text-slate-600 text-base mb-8 leading-relaxed">
-            You can email us at{' '}
-            <a href="mailto:hello@linkmedicalspaces.com" className="text-teal-600 hover:text-teal-700 font-semibold transition-colors">
-              hello@linkmedicalspaces.com
-            </a>{' '}
-            or use the contact form below, and we'll get back to you within 2 working days.
-          </p>
+  You can email us at{' '}
+  <a
+    href="mailto:contact@medspace.demo"
+    className="text-teal-600 hover:text-teal-700 font-semibold transition-colors">
+    contact@medspace.demo
+  </a>{' '}
+  or use the contact form below, and we'll get back to you within 2 working days.
+</p>
 
           {success && (<div className="mb-8 p-4 bg-teal-50 border border-teal-200 text-teal-800 rounded-lg text-sm font-medium">
               Thank you! Your message has been sent successfully. We will be in touch soon.

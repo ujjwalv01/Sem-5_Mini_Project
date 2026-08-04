@@ -4,19 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
     {
-        quote: "I had a fantastic experience working with MedSpace to find a medical office space to lease. From the start, their team was attentive, knowledgeable, and genuinely invested in understanding my needs. They made the entire process smooth and stress-free — handling every detail with professionalism and care. Thanks to their expertise, I found the perfect office space that meets all my requirements. I highly recommend MedSpace to anyone looking for medical office leasing solutions!",
-        name: "Jamie Martinez",
-        title: "Practice Manager"
+        quote: "MedSpace provides a clean and user-friendly interface for exploring and managing medical spaces. The project demonstrates modern web development practices with an intuitive design.",
+        name: "Demo User",
+        title: "Project Reviewer"
     },
     {
-        quote: "MedSpace made it easy for me to find and sublease medical office space. The website is simple to use and made for doctors and healthcare providers. I could quickly list my space and talk to people who were interested. The listings had clear details like size, price, and what equipment was included. This saved me time and stress compared to using a regular broker. The support team was friendly and quick to help when I had questions. I would definitely recommend MedSpace to anyone in healthcare who wants to rent out or find office space.",
-        name: "Dr Khubchandani",
-        title: ""
+        quote: "The application makes it simple to browse available medical spaces, manage listings, and understand the overall workflow. It serves as an excellent academic demonstration project.",
+        name: "College Evaluator",
+        title: "Faculty Reviewer"
     },
     {
-        quote: "Dr. Mitra and I \"knew\" each other virtually through shared circles. However, our connection became flesh and blood \"real\" when we made a decision to sublease our brick and mortar office. From the moment we listed, she checked in with us periodically, and came by (with treats) to meet, chat, and view the office. Absolutely love the authenticity with which she runs her business!",
-        name: "Dr Heather Stanley-Christian",
-        title: ""
+        quote: "The MedSpace project showcases full-stack development using Next.js, Prisma, MongoDB, and Tailwind CSS. It is well organized and demonstrates practical software engineering concepts.",
+        name: "Academic Mentor",
+        title: "Project Guide"
     }
 ];
 export default function TestimonialSlider() {
@@ -38,11 +38,12 @@ export default function TestimonialSlider() {
       <div className="max-w-4xl mx-auto px-6 relative">
         <div className="text-center mb-10">
           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-teal-600 mb-3">
-            What healthcare professionals are saying
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-light text-slate-800 tracking-tight">
-            Real Stories. Real Results.
-          </h2>
+    Project Feedback
+</p>
+
+<h2 className="text-3xl sm:text-4xl font-light text-slate-800 tracking-tight">
+    Demo Reviews
+</h2>
         </div>
 
         <div className="relative min-h-[250px] flex items-center justify-center">

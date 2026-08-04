@@ -66,40 +66,42 @@ export default function Home() {
             image: '/lms-1.jpg',
             preheading: 'PROJECT OVERVIEW',
             heading: 'Discover Medical Spaces',
-            text: 'Browse available medical spaces and explore the core features of the MedSpace project.'
-          }, 
+            text: 'Explore medical spaces, manage listings, and discover the core features of the MedSpace college project.'
+        }, 
+        
         {
-            image: '/lms-2.jpg',
-            preheading: 'PASSIVE INCOME OPPORTUNITY',
-            heading: 'Optimize Your Medical Office Space',
-            text: "Are you utilizing your medical office well? Turn it into a passive income stream and help out a colleague. Sublet what you don't use, when you don't use it.",
-            buttonLabel: 'Post Your Space',
-            buttonLink: '/list-your-space'
-        },
+    image: '/lms-2.jpg',
+    preheading: 'SPACE LISTING',
+    heading: 'Share Available Medical Spaces',
+    text: 'Allow healthcare professionals to publish available medical spaces and help others easily discover suitable workspaces.',
+    buttonLabel: 'List a Space',
+    buttonLink: '/list-your-space'
+},
         {
-            image: '/lms-3.jpg',
-            preheading: 'ADAPT & THRIVE',
-            heading: 'Start Lean, Stay Lean',
-            text: "You may have noticed, the healthcare landscape is changing. Reimbursements and the cost of doing business are going in opposite directions. If you're going to thrive in private practice, you have to go lean. Focus on office space- it's probably the biggest expense for a medical practice.",
-            buttonLabel: 'Find Your Medical Office',
-            buttonLink: '/search-spaces'
-        },
+    image: '/lms-3.jpg',
+    preheading: 'SMART SEARCH',
+    heading: 'Find the Right Medical Space',
+    text: 'Search medical spaces using location and availability filters to quickly find the most suitable option.',
+    buttonLabel: 'Search Spaces',
+    buttonLink: '/search-spaces'
+},
         {
-            image: '/lms-4.jpg',
-            preheading: 'EMBRACE FLEXIBILITY',
-            heading: 'Work On Your Terms. Even In Medicine.',
-            text: "It's 2025. About time that flexibility became more norm than exception. Even in medicine. Shared workspace has been around for a while now, for good reason. It's time we embraced it too. Even in medicine.",
-            buttonLabel: 'Join the Flexible Workspace',
-            buttonLink: '/search-spaces'
-        },
+    image: '/lms-4.jpg',
+    preheading: 'USER FRIENDLY',
+    heading: 'Simple and Intuitive Interface',
+    text: 'MedSpace provides an easy-to-use interface that helps users browse, explore, and manage medical spaces efficiently.',
+    buttonLabel: 'Explore',
+    buttonLink: '/search-spaces'
+},
         {
-            image: '/lms-5.jpg',
-            preheading: 'COST SAVINGS',
-            heading: 'Zero Realtor Commissions',
-            text: 'By connecting healthcare professionals directly with medical office space, we save you thousands on commissions!',
-            buttonLabel: 'Post Your Space',
-            buttonLink: '/list-your-space'
-        }
+    image: '/lms-5.jpg',
+    preheading: 'MODERN TECHNOLOGY',
+    heading: 'Built with Modern Web Technologies',
+    text: 'Developed using Next.js, Tailwind CSS, MongoDB, Prisma, and NextAuth to demonstrate a modern full-stack web application.',
+    buttonLabel: 'Search Spaces',
+    buttonLink: '/search-spaces'
+}
+
     ];
     return (<div className="min-h-screen bg-white flex flex-col font-sans">
       <Navbar />
@@ -121,7 +123,7 @@ export default function Home() {
             </h1>
             <button onClick={() => router.push('/list-your-space')} className="mt-8 border border-white/80 hover:bg-white hover:text-[#eb5253] text-white transition-all duration-300 rounded-none px-8 py-3 flex flex-col items-center group-hover:scale-105">
               <div className="flex items-center gap-2 font-bold text-lg">
-                <span>Post Your Space</span>
+                <span>List a Space</span>
                 <ArrowRight className="w-5 h-5"/>
               </div>
               <div className="text-[10px] sm:text-xs font-bold opacity-90 mt-1 uppercase tracking-wider">Quick & Easy Listing</div>
@@ -144,26 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured On Section (Marquee Slider) */}
-      <section className="border-b border-slate-100 bg-white py-12 overflow-hidden">
-        <div className="w-full">
-          <p className="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-10">Featured On</p>
-          <div className="relative w-full overflow-hidden flex">
-            <div className="animate-marquee flex w-max opacity-70 hover:opacity-100 transition-opacity duration-300">
-              <div className="flex gap-16 pr-16 items-center">
-                {Array.from({ length: 8 }).map((_, i) => (<div key={i} className="relative w-28 h-12 md:w-36 md:h-16 grayscale hover:grayscale-0 transition-all duration-300 shrink-0">
-                    <Image src={`/F-${i + 1}.png`} alt={`Featured on ${i + 1}`} fill className="object-contain"/>
-                  </div>))}
-              </div>
-              <div className="flex gap-16 pr-16 items-center">
-                {Array.from({ length: 8 }).map((_, i) => (<div key={`dup-${i}`} className="relative w-28 h-12 md:w-36 md:h-16 grayscale hover:grayscale-0 transition-all duration-300 shrink-0">
-                    <Image src={`/F-${i + 1}.png`} alt={`Featured on ${i + 1}`} fill className="object-contain"/>
-                  </div>))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Alternating Content Sections */}
       <div className="bg-slate-50/50">
