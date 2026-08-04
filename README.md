@@ -66,27 +66,37 @@ Open http://localhost:3000 with your browser to see the result. The page will au
 
 ## How to Contribute
 
-1. Pull the latest changes: Always make sure you are on the latest main branch before starting work.
+Follow these steps to set up MedSpace locally and submit your changes.
 
-    git checkout main
-    git pull origin main
+```bash
+# Fork the repository on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/sem-5_mini_project.git
+cd sem-5_mini_project
 
-2. Create a new branch: Create a branch for your feature or bug fix.
+# Install dependencies
+npm install
 
-    git checkout -b feature/your-feature-name
+# Add upstream repository
+git remote add upstream https://github.com/ujjwalv01/sem-5_mini_project.git
 
-3. Make your changes: Write your code and test it locally.
+# Keep your fork updated
+git fetch upstream
+git checkout main
+git pull upstream main
 
-4. Commit your changes:
+# Create a feature branch
+# Format: feature-name or feature-name#issue-number
+git checkout -b add-search-filter
 
-    git add .
-    git commit -m "Add a descriptive commit message here"
+# Make your changes and test locally
+npm run dev
 
-5. Push and create a PR:
+# After changes, commit your work
+git add .
+git commit -m "Add search filter feature"
 
-    git push origin feature/your-feature-name
-
-Then go to GitHub and open a Pull Request!
+# Push your branch to your fork
+git push origin add-search-filter
 
 ---
 
