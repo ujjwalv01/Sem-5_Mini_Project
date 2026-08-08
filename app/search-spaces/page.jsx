@@ -442,33 +442,39 @@ function SearchSpacesPage() {
           <div className="flex flex-wrap items-center gap-3 flex-1">
             
             {/* State and City Selects */}
-            <div className="relative w-full sm:w-auto flex flex-col sm:flex-row gap-3">
-              <select 
-                value={selectedState} 
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setSelectedState(val);
-                  setSelectedCity('');
-                  updateURL({ state: val, city: '' });
-                }}
-                className="px-3 py-2 w-full sm:w-[160px] border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-slate-50/50 appearance-none"
-              >
-                <option value="">All States</option>
-                {indianStates.map(st => <option key={st} value={st}>{st}</option>)}
-              </select>
-              <select 
-                value={selectedCity}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setSelectedCity(val);
-                  updateURL({ state: selectedState, city: val });
-                }}
-                disabled={!selectedState}
-                className="px-3 py-2 w-full sm:w-[160px] border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-slate-50/50 appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="">All Cities</option>
-                {selectedState && indianLocations[selectedState]?.map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row gap-3">
+              <div className="relative w-full sm:w-[160px]">
+                <select 
+                  value={selectedState} 
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setSelectedState(val);
+                    setSelectedCity('');
+                    updateURL({ state: val, city: '' });
+                  }}
+                  className="pl-4 pr-8 py-2 w-full border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-white appearance-none cursor-pointer"
+                >
+                  <option value="">All States</option>
+                  {indianStates.map(st => <option key={st} value={st}>{st}</option>)}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 opacity-60 pointer-events-none"/>
+              </div>
+              <div className="relative w-full sm:w-[160px]">
+                <select 
+                  value={selectedCity}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setSelectedCity(val);
+                    updateURL({ state: selectedState, city: val });
+                  }}
+                  disabled={!selectedState}
+                  className="pl-4 pr-8 py-2 w-full border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-white appearance-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                >
+                  <option value="">All Cities</option>
+                  {selectedState && indianLocations[selectedState]?.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 opacity-60 pointer-events-none"/>
+              </div>
             </div>
 
             {/* Price Popover */}
