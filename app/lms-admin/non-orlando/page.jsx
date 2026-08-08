@@ -2,7 +2,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Loader2, Building, MapPinOff, } from 'lucide-react';
-export default function AdminNonOrlandoPage() {
+export default function AdminNonIndiaPage() {
     const router = useRouter();
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ export default function AdminNonOrlandoPage() {
             const params = new URLSearchParams();
             params.set('page', page.toString());
             params.set('limit', '20');
-            params.set('region', 'non-orlando');
+            params.set('region', 'other-cities');
             if (search)
                 params.set('search', search);
             params.set('sortBy', sortBy);
@@ -79,9 +79,9 @@ export default function AdminNonOrlandoPage() {
       <div>
         <div className="flex items-center gap-2">
           <MapPinOff className="w-5 h-5 text-slate-400"/>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Non-Orlando Requests</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Other Cities Requests</h1>
         </div>
-        <p className="text-sm text-slate-500 font-medium mt-1">{total} properties outside Orlando/FL</p>
+        <p className="text-sm text-slate-500 font-medium mt-1">{total} properties outside India/FL</p>
       </div>
 
       {/* Search */}
@@ -117,7 +117,7 @@ export default function AdminNonOrlandoPage() {
                   </td>
                 </tr>) : properties.length === 0 ? (<tr>
                   <td colSpan={5} className="text-center py-16 text-slate-500 text-sm font-semibold">
-                    No non-Orlando requests found.
+                    No non-India requests found.
                   </td>
                 </tr>) : (properties.map((prop) => (<tr key={prop.id} onClick={() => router.push(`/lms-admin/properties/${prop.id}`)} className="border-b border-slate-50 hover:bg-slate-50/80 cursor-pointer transition-colors">
                     <td className="px-5 py-4">

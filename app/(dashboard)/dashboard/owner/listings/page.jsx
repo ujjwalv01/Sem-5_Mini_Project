@@ -62,7 +62,7 @@ export default async function OwnerListingsPage({ searchParams, }) {
             {listings.map((listing) => {
                 const image = listing.media?.[0]?.originalUrl || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800';
                 const availabilityHours = listing.availabilityHours || {};
-                const region = availabilityHours.region === 'other' ? 'Non-Orlando' : 'Orlando';
+                const region = availabilityHours.region === 'other' ? 'Other Cities' : 'India';
                 let displayPrice = '';
                 if (listing.pricePerMonth)
                     displayPrice = `$${listing.pricePerMonth}/mo`;

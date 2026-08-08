@@ -29,7 +29,7 @@ function ListYourSpacePage() {
             })
                 .catch(err => console.error('Failed to prefetch slots:', err));
             // Also prefetch the add-listing route so navigation is instant
-            router.prefetch('/add-listing?region=orlando');
+            router.prefetch('/add-listing?region=india');
         }
     }, [authStatus]);
     // Prefetch Stripe URL when entering Step 2 as authenticated user
@@ -64,12 +64,12 @@ function ListYourSpacePage() {
             prefetch();
         }
     }, [currentStep, authStatus, checkoutUrl, prefetching, error]);
-    // Auto-trigger if they just logged in via the modal and the page reloaded with ?region=orlando
+    // Auto-trigger if they just logged in via the modal and the page reloaded with ?region=india
     useEffect(() => {
         const regionParam = searchParams.get('region');
-        if (regionParam === 'orlando' && authStatus === 'authenticated' && !selectedRegion && !loading) {
-            setSelectedRegion('orlando');
-            handleContinue('orlando');
+        if (regionParam === 'india' && authStatus === 'authenticated' && !selectedRegion && !loading) {
+            setSelectedRegion('india');
+            handleContinue('india');
         }
     }, [searchParams, authStatus, selectedRegion, loading]);
     const handleContinue = async (region) => {
@@ -80,7 +80,7 @@ function ListYourSpacePage() {
         if (targetRegion === 'other') {
             return;
         }
-        if (targetRegion === 'orlando') {
+        if (targetRegion === 'india') {
             if (authStatus === 'authenticated') {
                 let slots = availableSlots;
                 // If the prefetch hasn't finished yet, fetch now
@@ -97,7 +97,7 @@ function ListYourSpacePage() {
                     }
                 }
                 if (slots !== null && slots > 0) {
-                    router.push('/add-listing?region=orlando');
+                    router.push('/add-listing?region=india');
                     return;
                 }
             }
@@ -107,7 +107,7 @@ function ListYourSpacePage() {
     };
     const handleSubscribe = async () => {
         if (authStatus !== 'authenticated') {
-            router.push('/signup?callbackUrl=/list-your-space?region=orlando');
+            router.push('/signup?callbackUrl=/list-your-space?region=india');
             return;
         }
         if (checkoutUrl) {
@@ -119,10 +119,10 @@ function ListYourSpacePage() {
     };
     const handleBypass = () => {
         if (authStatus !== 'authenticated') {
-            router.push('/signup?callbackUrl=/add-listing?region=orlando');
+            router.push('/signup?callbackUrl=/add-listing?region=india');
             return;
         }
-        router.push('/add-listing?region=orlando');
+        router.push('/add-listing?region=india');
     };
     const handleJoinWaitlist = (e) => {
         e.preventDefault();
@@ -169,19 +169,19 @@ function ListYourSpacePage() {
                   <p className="text-2xl font-bold text-[#1a2b49] tracking-wide mb-2 text-center">Select your region</p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Orlando Area Card */}
+                    {/* India Area Card */}
                     <motion.button whileTap={{ scale: 0.97 }} onClick={() => {
-                setSelectedRegion('orlando');
+                setSelectedRegion('india');
                 setError(null);
-                handleContinue('orlando');
-            }} className={`relative flex flex-col items-start gap-4 p-6 rounded-2xl border-2 transition-all text-left cursor-pointer ${selectedRegion === 'orlando'
+                handleContinue('india');
+            }} className={`relative flex flex-col items-start gap-4 p-6 rounded-2xl border-2 transition-all text-left cursor-pointer ${selectedRegion === 'india'
                 ? 'bg-[#1a2b49] border-[#1a2b49] text-white shadow-lg shadow-slate-900/10'
                 : 'bg-white border-slate-200 hover:border-slate-300 text-slate-800'}`}>
-                      <MapPin className={`w-7 h-7 ${selectedRegion === 'orlando' ? 'text-white' : 'text-[#E51D53]'}`}/>
+                      <MapPin className={`w-7 h-7 ${selectedRegion === 'india' ? 'text-white' : 'text-[#E51D53]'}`}/>
                       <div>
-                        <h3 className={`text-lg font-bold ${selectedRegion === 'orlando' ? 'text-white' : 'text-[#1a2b49]'}`}>Orlando Area</h3>
-                        <p className={`text-xs mt-1 leading-relaxed ${selectedRegion === 'orlando' ? 'text-slate-300' : 'text-slate-500'}`}>
-                          Orange, Seminole, Osceola & surrounding counties
+                        <h3 className={`text-lg font-bold ${selectedRegion === 'india' ? 'text-white' : 'text-[#1a2b49]'}`}>India Area</h3>
+                        <p className={`text-xs mt-1 leading-relaxed ${selectedRegion === 'india' ? 'text-slate-300' : 'text-slate-500'}`}>
+                          Mumbai, Delhi, Bangalore & other major cities
                         </p>
                       </div>
                     </motion.button>
@@ -288,7 +288,7 @@ function ListYourSpacePage() {
         </div>
       </main>
 
-      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} callbackUrl="/list-your-space?region=orlando"/>
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} callbackUrl="/list-your-space?region=india"/>
     </div>);
 }
 export default function ListYourSpacePageWrapper() {

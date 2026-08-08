@@ -9,7 +9,7 @@ const testimonials = [
     {
         quote: "Found my perfect exam room within 48 hours of signing up. The process was incredibly smooth — truly the Airbnb of medical spaces.",
         author: "Dr. Sarah Chen",
-        title: "Cardiologist · Orlando, FL",
+        title: "Cardiologist · Mumbai, MH",
         avatar: "SC",
         color: "from-teal-400 to-cyan-500",
     },

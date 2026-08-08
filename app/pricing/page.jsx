@@ -43,10 +43,10 @@ function PricingPage() {
     };
     const handleBypass = () => {
         if (status !== 'authenticated') {
-            router.push('/signup?callbackUrl=/add-listing?region=orlando');
+            router.push('/signup?callbackUrl=/add-listing?region=india');
             return;
         }
-        router.push('/add-listing?region=orlando');
+        router.push('/add-listing?region=india');
     };
     return (<div className="min-h-screen bg-white flex flex-col font-sans overflow-x-hidden">
       {/* Top Header */}

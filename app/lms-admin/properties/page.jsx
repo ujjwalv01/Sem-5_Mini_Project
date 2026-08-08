@@ -18,7 +18,7 @@ export default function AdminPropertiesPage() {
             const params = new URLSearchParams();
             params.set('page', page.toString());
             params.set('limit', '20');
-            params.set('region', 'orlando');
+            params.set('region', 'india');
             if (search)
                 params.set('search', search);
             params.set('sortBy', sortBy);
@@ -77,7 +77,7 @@ export default function AdminPropertiesPage() {
     };
     return (<div className="space-y-6 max-w-7xl">
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Properties — Orlando Region</h1>
+        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Properties — India Region</h1>
         <p className="text-sm text-slate-500 font-medium mt-1">{total} properties</p>
       </div>
 

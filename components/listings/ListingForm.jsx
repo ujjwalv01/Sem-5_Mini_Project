@@ -6,6 +6,7 @@ import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 import { useDropzone } from 'react-dropzone';
 import imageCompression from 'browser-image-compression';
 import { MapPin, Loader2, UploadCloud, Trash2, AlertCircle, Plus, Check, ChevronDown, Stethoscope, Activity, Map, Camera, CheckCircle2, CheckCircle, XCircle, Clock, Hourglass, FileText, PenTool, Sofa, Droplet, Coffee, Briefcase, HelpCircle, Zap, Wifi, Sparkles, Hammer, Building, User, Users, Minus, X } from 'lucide-react';
+import { indianStates, indianLocations } from '@/lib/indianLocations';
 const uploadWithProgress = (url, formData, onProgress) => {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -25,11 +26,7 @@ const uploadWithProgress = (url, formData, onProgress) => {
         xhr.send(formData);
     });
 };
-const US_STATES = [
-    { value: '', label: '- Select -' },
-    { value: 'FL', label: 'Florida' },
-    { value: 'Other', label: 'Other' },
-];
+
 const HEAR_ABOUT_OPTIONS = [
     '- Select -', 'Google Search', 'Social Media', 'Referral from a colleague',
     'Medical conference or event', 'Email newsletter', 'Other',
@@ -255,7 +252,7 @@ function ListingForm({ draftIdFromProps }) {
             rooms: examRooms ? parseInt(examRooms) : 1,
             address: streetAddress,
             city,
-            state: state === 'Other' ? otherState : state,
+            state: state,
             zipCode,
             country: 'US',
             latitude,
@@ -358,7 +355,7 @@ function ListingForm({ draftIdFromProps }) {
             const google = window.google;
             setMapsLoaded(true);
             if (mapRef.current && !mapInstanceRef.current) {
-                const defaultLatLng = { lat: latitude || 28.5383, lng: longitude || -81.3792 };
+                const defaultLatLng = { lat: latitude || 20.5937, lng: longitude || 78.9629 };
                 const map = new google.maps.Map(mapRef.current, {
                     center: defaultLatLng, zoom: latitude ? 15 : 10,
                     mapTypeControl: false, streetViewControl: false, fullscreenControl: false,
@@ -700,7 +697,7 @@ function ListingForm({ draftIdFromProps }) {
         router.push('/dashboard');
     };
     const handleSubmit = async () => {
-        if (!streetAddress || !city || !state || !zipCode || (state === 'Other' && !otherState)) {
+        if (!streetAddress || !city || !state || !zipCode) {
             setSubmitError({ message: 'Please fill in your complete address.', step: 2 });
             return;
         }
@@ -946,16 +943,26 @@ function ListingForm({ draftIdFromProps }) {
                 <div className="bg-white border-2 border-slate-200 rounded-2xl divide-y divide-slate-200 overflow-hidden">
                   <input type="text" placeholder="Street Address *" value={streetAddress} onChange={e => setStreetAddress(e.target.value)} className="w-full px-4 py-4 text-sm font-medium outline-none"/>
                   <input type="text" placeholder="Street Address line 2 (optional)" value={streetAddress2} onChange={e => setStreetAddress2(e.target.value)} className="w-full px-4 py-4 text-sm font-medium outline-none"/>
-                  <input type="text" placeholder="City *" value={city} onChange={e => setCity(e.target.value)} className="w-full px-4 py-4 text-sm font-medium outline-none"/>
+                  
                   <div className="relative">
                     <label className="absolute left-4 top-1.5 text-[10px] font-semibold text-slate-400">State / Province <span className="text-red-500">*</span></label>
-                    <select value={state} onChange={e => setState(e.target.value)} className="w-full appearance-none bg-white px-4 pt-6 pb-2 text-sm font-medium outline-none cursor-pointer">
-                      {US_STATES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+                    <select value={state} onChange={e => { setState(e.target.value); setCity(''); }} className="w-full appearance-none bg-white px-4 pt-6 pb-2 text-sm font-medium outline-none cursor-pointer">
+                      <option value="">Select State</option>
+                      {indianStates.map(s => <option key={s} value={s}>{s}</option>)}
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"/>
                   </div>
-                  {state === 'Other' && (<input type="text" placeholder="Enter state or province name... *" value={otherState} onChange={e => setOtherState(e.target.value)} className="w-full px-4 py-4 text-sm font-medium outline-none bg-slate-50 border-t border-slate-200"/>)}
-                  <input type="text" placeholder="Zip Code *" value={zipCode} onChange={e => setZipCode(e.target.value)} className="w-full px-4 py-4 text-sm font-medium outline-none"/>
+
+                  <div className="relative">
+                    <label className="absolute left-4 top-1.5 text-[10px] font-semibold text-slate-400">City <span className="text-red-500">*</span></label>
+                    <select value={city} onChange={e => setCity(e.target.value)} disabled={!state} className="w-full appearance-none bg-white px-4 pt-6 pb-2 text-sm font-medium outline-none cursor-pointer disabled:opacity-50">
+                      <option value="">Select City</option>
+                      {state && indianLocations[state]?.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"/>
+                  </div>
+
+                  <input type="text" placeholder="PIN Code *" value={zipCode} onChange={e => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 6))} className="w-full px-4 py-4 text-sm font-medium outline-none"/>
                 </div>
              </div>)}
 

@@ -6,6 +6,7 @@ import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Search, MapPin, ChevronLeft, ChevronRight, IndianRupee, Map, List, SlidersHorizontal, X, ChevronDown, Info, MapPinned, Image as ImageIcon, Video } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import { indianStates, indianLocations } from '@/lib/indianLocations';
 function SearchSpacesPage() {
     const router = useRouter();
     const pathname = usePathname();
@@ -14,6 +15,8 @@ function SearchSpacesPage() {
     // --- Search Filters States ---
     const [searchQuery, setSearchQuery] = useState('');
     const [location, setLocation] = useState('');
+    const [selectedState, setSelectedState] = useState('');
+    const [selectedCity, setSelectedCity] = useState('');
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
     const [radius, setRadius] = useState(50);
@@ -52,6 +55,7 @@ function SearchSpacesPage() {
     useEffect(() => {
         const q = searchParams.get('query') || '';
         const city = searchParams.get('city') || '';
+        const state = searchParams.get('state') || '';
         const latParam = searchParams.get('lat') ? parseFloat(searchParams.get('lat')) : null;
         const lngParam = searchParams.get('lng') ? parseFloat(searchParams.get('lng')) : null;
         const radParam = searchParams.get('radius') ? parseInt(searchParams.get('radius')) : 50;
@@ -61,6 +65,8 @@ function SearchSpacesPage() {
         const dateParam = searchParams.get('date') || '';
         setSearchQuery(q);
         setLocation(city);
+        setSelectedCity(city);
+        setSelectedState(state);
         setLat(latParam);
         setLng(lngParam);
         setRadius(radParam);
@@ -74,6 +80,7 @@ function SearchSpacesPage() {
         fetchListingsWithParams({
             query: q,
             city: city,
+            state: state,
             lat: latParam,
             lng: lngParam,
             radius: radParam,
@@ -95,6 +102,8 @@ function SearchSpacesPage() {
                 params.set('query', paramsObj.query);
             if (paramsObj.city)
                 params.set('city', paramsObj.city);
+            if (paramsObj.state)
+                params.set('state', paramsObj.state);
             if (paramsObj.lat !== undefined && paramsObj.lat !== null) {
                 params.set('lat', paramsObj.lat.toString());
             }
@@ -139,7 +148,8 @@ function SearchSpacesPage() {
         if (page < totalPages) {
             fetchListingsWithParams({
                 query: searchQuery,
-                city: location,
+                city: selectedCity,
+                state: selectedState,
                 lat,
                 lng,
                 radius,
@@ -178,8 +188,8 @@ function SearchSpacesPage() {
         importLibrary("places").then(() => {
             const google = window.google;
             setMapsLoaded(true);
-            // Fallback location: Orlando, FL
-            const defaultLatLng = { lat: lat || 28.538336, lng: lng || -81.379234 };
+            // Fallback location: Central India
+            const defaultLatLng = { lat: lat || 20.5937, lng: lng || 78.9629 };
             if (mapRef.current && !mapInstanceRef.current) {
                 const map = new google.maps.Map(mapRef.current, {
                     center: defaultLatLng,
@@ -200,29 +210,6 @@ function SearchSpacesPage() {
                 map.addListener('dragend', () => {
                     setMapDragged(true);
                 });
-                // Initialize Places Autocomplete
-                if (autocompleteInputRef.current) {
-                    const autocomplete = new google.maps.places.Autocomplete(autocompleteInputRef.current, {
-                        types: ['(regions)'],
-                        componentRestrictions: { country: 'in' }
-                    });
-                    autocomplete.addListener('place_changed', () => {
-                        const place = autocomplete.getPlace();
-                        if (!place.geometry || !place.geometry.location)
-                            return;
-                        const newLat = place.geometry.location.lat();
-                        const newLng = place.geometry.location.lng();
-                        const cityAddress = place.formatted_address || place.name || '';
-                        map.setCenter({ lat: newLat, lng: newLng });
-                        map.setZoom(12);
-                        setMapDragged(false);
-                        updateURL({
-                            city: cityAddress,
-                            lat: newLat,
-                            lng: newLng,
-                        });
-                    });
-                }
             }
         }).catch((err) => {
             console.error('Failed to load Google Maps script', err);
@@ -454,13 +441,34 @@ function SearchSpacesPage() {
           
           <div className="flex flex-wrap items-center gap-3 flex-1">
             
-            {/* Google Places Autocomplete */}
-            <div className="relative w-full sm:w-[240px]">
-              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"/>
-              <input ref={autocompleteInputRef} type="text" placeholder="Search location/city..." value={location} onChange={(e) => setLocation(e.target.value)} className="pl-9 pr-8 py-2 w-full border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 placeholder-slate-400 transition-all bg-slate-50/50"/>
-              {location && (<button onClick={() => { setLocation(''); setLat(null); setLng(null); updateURL({ city: '', lat: null, lng: null }); }} className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full">
-                  <X className="w-3.5 h-3.5"/>
-                </button>)}
+            {/* State and City Selects */}
+            <div className="relative w-full sm:w-auto flex flex-col sm:flex-row gap-3">
+              <select 
+                value={selectedState} 
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSelectedState(val);
+                  setSelectedCity('');
+                  updateURL({ state: val, city: '' });
+                }}
+                className="px-3 py-2 w-full sm:w-[160px] border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-slate-50/50 appearance-none"
+              >
+                <option value="">All States</option>
+                {indianStates.map(st => <option key={st} value={st}>{st}</option>)}
+              </select>
+              <select 
+                value={selectedCity}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSelectedCity(val);
+                  updateURL({ state: selectedState, city: val });
+                }}
+                disabled={!selectedState}
+                className="px-3 py-2 w-full sm:w-[160px] border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-slate-50/50 appearance-none disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <option value="">All Cities</option>
+                {selectedState && indianLocations[selectedState]?.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
             </div>
 
             {/* Price Popover */}

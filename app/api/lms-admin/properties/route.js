@@ -11,27 +11,27 @@ export async function GET(req) {
         const page = parseInt(searchParams.get('page') || '1');
         const limit = parseInt(searchParams.get('limit') || '20');
         const search = searchParams.get('search') || '';
-        const region = searchParams.get('region') || 'orlando'; // orlando | non-orlando | all
+        const region = searchParams.get('region') || 'delhi'; // delhi | non-delhi | all
         const status = searchParams.get('status') || '';
         const sortBy = searchParams.get('sortBy') || 'createdAt';
         const sortOrder = searchParams.get('sortOrder') || 'desc';
         const where = {};
         const andConditions = [];
         // Region filter
-        if (region === 'orlando') {
+        if (region === 'delhi') {
             andConditions.push({
                 OR: [
-                    { city: { contains: 'Orlando', mode: 'insensitive' } },
+                    { city: { contains: 'Delhi', mode: 'insensitive' } },
                     { state: 'FL' },
                 ],
             });
         }
-        else if (region === 'non-orlando') {
+        else if (region === 'non-delhi') {
             andConditions.push({
                 AND: [
                     {
                         NOT: {
-                            city: { contains: 'Orlando', mode: 'insensitive' },
+                            city: { contains: 'Delhi', mode: 'insensitive' },
                         },
                     },
                     {
