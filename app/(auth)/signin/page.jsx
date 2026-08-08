@@ -260,6 +260,9 @@ function SignInPage() {
                       Google
                     </>)}
                 </button>
+                <button type="button" onClick={() => router.push(callbackUrl || '/')} className="w-full flex items-center justify-center gap-3 border border-gray-200 hover:border-gray-300 hover:bg-gray-50 py-3 rounded-xl font-semibold text-gray-700 transition-all active:scale-95 shadow-sm">
+                  Continue as Guest
+                </button>
               </div>
             </form>) : (<form onSubmit={handleVerifyOTP} className="space-y-4">
               <div>
