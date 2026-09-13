@@ -1,5 +1,6 @@
 import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 // ─── Hard-coded admin emails (duplicated from lib/admin.ts because middleware
 //     runs in the Edge Runtime and cannot import server-only modules) ─────────
 const LMS_ADMIN_EMAILS = [
@@ -33,8 +34,16 @@ if (typeof setInterval !== 'undefined') {
         });
     }, 120_000);
 }
-export default withAuth(function middleware(req) {
-    const token = req.nextauth.token;
+export default withAuth(async function middleware(req) {
+    let token = req.nextauth.token;
+    
+    // Fallback: If withAuth didn't find the token (e.g. due to Vercel/NEXTAUTH_URL secure cookie mismatch),
+    // manually attempt to decode it using both possible cookie names.
+    if (!token) {
+        token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET, secureCookie: true })
+             || await getToken({ req, secret: process.env.NEXTAUTH_SECRET, secureCookie: false });
+    }
+
     // User role & subscription status
     const role = token?.role;
     const subscriptionStatus = token?.subscriptionStatus;
