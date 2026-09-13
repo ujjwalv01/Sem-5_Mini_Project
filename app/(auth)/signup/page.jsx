@@ -37,7 +37,13 @@ const stats = [
 function SignUpPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+    const rawCallbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+    // Strip origin from absolute URLs so we only deal with paths
+    let callbackUrl = rawCallbackUrl;
+    try {
+        const parsed = new URL(rawCallbackUrl);
+        callbackUrl = parsed.pathname + parsed.search;
+    } catch { /* already a relative path */ }
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [step, setStep] = useState('email');
@@ -99,7 +105,13 @@ function SignUpPage() {
             setErrorMsg('Invalid or expired OTP.');
         }
         else {
-            window.location.href = callbackUrl;
+            // If user came from list-your-space, send to onboarding with lister intent
+            // so middleware doesn't race with the freshly created session
+            if (callbackUrl.startsWith('/list-your-space') || callbackUrl.startsWith('/add-listing')) {
+                window.location.href = '/onboarding?intent=lister&callbackUrl=' + encodeURIComponent(callbackUrl);
+            } else {
+                window.location.href = callbackUrl;
+            }
         }
     }
     // ── Handle Google ─────────────────────────────────────────────────────────
