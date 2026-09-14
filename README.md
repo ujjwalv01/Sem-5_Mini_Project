@@ -14,6 +14,7 @@ This project was bootstrapped with `create-next-app` and utilizes a modern tech 
 - **Styling:** Tailwind CSS / Vanilla CSS
 - **Database:** MongoDB (via Mongoose)
 - **Authentication:** NextAuth.js
+- **AI Chatbot:** Groq API (`llama-3.3-70b-versatile`) — floating assistant available on every page
 - **Package Manager:** npm
 
 ---
@@ -52,6 +53,9 @@ The project requires certain environment variables to run properly (like databas
     
     NEXTAUTH_URL=http://localhost:3000
     NEXTAUTH_SECRET=your_super_secret_key
+
+    # Groq API key, required for the AI chatbot (get a free key at https://console.groq.com)
+    GROQ_API_KEY=your_groq_api_key
 
 > Note: Never commit the `.env` file to GitHub!
 
