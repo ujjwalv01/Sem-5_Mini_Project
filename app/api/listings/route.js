@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { z } from 'zod';
+import { getIndianStateVariants, getIndianCityVariants } from '@/lib/indianLocations';
 function slugify(text) {
     return text.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
 }
@@ -40,10 +41,17 @@ export async function GET(req) {
             });
         }
         if (city) {
-            andConditions.push({ city: { contains: city, mode: 'insensitive' } });
+            // Match old/alternate city names too (e.g. "Gurugram" also finds "Gurgaon")
+            andConditions.push({
+                OR: getIndianCityVariants(city).map(v => ({ city: { contains: v, mode: 'insensitive' } }))
+            });
         }
         if (state) {
-            andConditions.push({ state });
+            // Listings may have been saved with an abbreviation ("MH") or different casing,
+            // so match every known spelling of the state, case-insensitively.
+            andConditions.push({
+                OR: getIndianStateVariants(state).map(v => ({ state: { equals: v, mode: 'insensitive' } }))
+            });
         }
         if (spaceType) {
             // Temporarily ignoring spaceType filter so all listings show regardless of selection
