@@ -6,7 +6,7 @@ import { setOptions, importLibrary } from '@googlemaps/js-api-loader';
 import { useDropzone } from 'react-dropzone';
 import imageCompression from 'browser-image-compression';
 import { MapPin, Loader2, UploadCloud, Trash2, AlertCircle, Plus, Check, ChevronDown, Stethoscope, Activity, Map, Camera, CheckCircle2, CheckCircle, XCircle, Clock, Hourglass, FileText, PenTool, Sofa, Droplet, Coffee, Briefcase, HelpCircle, Zap, Wifi, Sparkles, Hammer, Building, User, Users, Minus, X } from 'lucide-react';
-import { indianStates, indianLocations } from '@/lib/indianLocations';
+import { indianStates, indianLocations, normalizeIndianState } from '@/lib/indianLocations';
 const uploadWithProgress = (url, formData, onProgress) => {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -386,7 +386,7 @@ function ListingForm({ draftIdFromProps }) {
                             if (comp.types.includes('locality'))
                                 parsedCity = comp.long_name;
                             if (comp.types.includes('administrative_area_level_1'))
-                                parsedState = comp.short_name;
+                                parsedState = normalizeIndianState(comp.long_name);
                             if (comp.types.includes('postal_code'))
                                 parsedZip = comp.long_name;
                         });
@@ -421,7 +421,7 @@ function ListingForm({ draftIdFromProps }) {
                                     if (comp.types.includes('locality'))
                                         parsedCity = comp.long_name;
                                     if (comp.types.includes('administrative_area_level_1'))
-                                        parsedState = comp.short_name;
+                                        parsedState = normalizeIndianState(comp.long_name);
                                     if (comp.types.includes('postal_code'))
                                         parsedZip = comp.long_name;
                                 });

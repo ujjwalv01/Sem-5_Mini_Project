@@ -312,10 +312,12 @@ function SearchSpacesPage() {
             const newLat = center.lat();
             const newLng = center.lng();
             setMapDragged(false);
+            // Map-area search replaces the State/City filter rather than stacking on it
             updateURL({
                 lat: newLat,
                 lng: newLng,
-                city: 'Map Location'
+                state: '',
+                city: ''
             });
         }
     };
@@ -450,7 +452,8 @@ function SearchSpacesPage() {
                     const val = e.target.value;
                     setSelectedState(val);
                     setSelectedCity('');
-                    updateURL({ state: val, city: '' });
+                    // Drop any stale map-radius filter so it isn't ANDed with the state filter
+                    updateURL({ state: val, city: '', lat: '', lng: '', radius: '' });
                   }}
                   className="pl-4 pr-8 py-2 w-full border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-white appearance-none cursor-pointer"
                 >
@@ -465,7 +468,7 @@ function SearchSpacesPage() {
                   onChange={(e) => {
                     const val = e.target.value;
                     setSelectedCity(val);
-                    updateURL({ state: selectedState, city: val });
+                    updateURL({ state: selectedState, city: val, lat: '', lng: '', radius: '' });
                   }}
                   disabled={!selectedState}
                   className="pl-4 pr-8 py-2 w-full border border-slate-200 hover:border-slate-300 focus:border-teal-500 focus:ring-1 focus:ring-teal-500 rounded-xl text-sm font-semibold outline-none text-slate-800 transition-all bg-white appearance-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
