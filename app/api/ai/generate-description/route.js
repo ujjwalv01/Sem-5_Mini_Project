@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
-import Anthropic from '@anthropic-ai/sdk';
+import { groqComplete, isGroqConfigured } from '@/lib/groq';
 // Helper function to generate fallback description if API key is invalid/missing
 function generateFallbackDescription(listing) {
     const typeLabel = listing.spaceType
@@ -66,10 +66,9 @@ Amenities: ${amenities}
 Size: ${size}
 Write 2-3 paragraphs. Be specific, professional and highlight the medical features.
 Do not use generic phrases. Make it sound premium and trustworthy.`;
-        const apiKey = process.env.ANTHROPIC_API_KEY;
         // Check if the key is missing or is the default placeholder
-        if (!apiKey || apiKey.includes('your-anthropic-api-key')) {
-            console.warn('Anthropic API key is not configured. Using high-quality fallback generator.');
+        if (!isGroqConfigured()) {
+            console.warn('Groq API key is not configured. Using high-quality fallback generator.');
             const description = generateFallbackDescription({
                 spaceType: listing.spaceType,
                 city: listing.city,
@@ -81,22 +80,17 @@ Do not use generic phrases. Make it sound premium and trustworthy.`;
             return NextResponse.json({ description });
         }
         try {
-            const anthropic = new Anthropic({ apiKey });
-            const message = await anthropic.messages.create({
-                model: 'claude-3-5-sonnet-20241022',
-                max_tokens: 512,
-                messages: [{ role: 'user', content: prompt }],
-            });
-            const content = message.content[0];
-            if (content && content.type === 'text') {
-                return NextResponse.json({ description: content.text.trim() });
+            const description = await groqComplete(
+                [{ role: 'user', content: prompt }],
+                { maxTokens: 512 }
+            );
+            if (!description) {
+                throw new Error('Empty response from Groq');
             }
-            else {
-                throw new Error('Unexpected response type from Claude');
-            }
+            return NextResponse.json({ description });
         }
         catch (apiError) {
-            console.error('Claude API call failed, falling back to template generation:', apiError);
+            console.error('Groq API call failed, falling back to template generation:', apiError);
             const description = generateFallbackDescription({
                 spaceType: listing.spaceType,
                 city: listing.city,
